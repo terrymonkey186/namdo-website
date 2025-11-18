@@ -3,78 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <title>Nam Do – Projects</title>
+
+  <!-- Modern Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Your stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header>
-    <h1>Nam Do</h1>
-    <p>IT Program Manager learning to build technical skills and my own website.</p>
+  <div class="page">
+    <header>
+      <h1>Nam Do</h1>
+      <p>IT Program Manager learning to build technical skills and my own website.</p>
 
-    <nav>
-      <a href="index.html#about">About</a>
-      <a href="index.html#focus">Current Focus</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="projects.html">Projects</a>
-    </nav>
-  </header>
+      <img src="profile.jpg" alt="Photo of Nam Do" class="profile-photo">
 
-  <main>
-    <section>
-      <h2>Projects</h2>
-      <p>Some of the initiatives I’ve led or supported as an IT Program Manager.</p>
+      <nav>
+        <a href="index.html#about">About</a>
+        <a href="index.html#focus">Current Focus</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="projects.html">Projects</a>
+      </nav>
 
-      <div class="project-card">
-        <h3>Azure Kubernetes Migration</h3>
-        <p>
-          Led a cross-functional effort to migrate services onto Azure Kubernetes,
-          coordinating engineers, tracking risks, and aligning timelines with business needs.
-        </p>
-        <ul>
-          <li>Planned and coordinated migration milestones and dependencies.</li>
-          <li>Worked closely with infra and app teams to reduce downtime risk.</li>
-          <li>Improved reliability and scalability of services after migration.</li>
-        </ul>
-      </div>
+      <!-- Dark mode toggle button -->
+      <button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
+    </header>
 
-      <div class="project-card">
-        <h3>Red Hat Upgrade & Security Hardening</h3>
-        <p>
-          Managed an OS upgrade across critical servers to resolve security,
-          compatibility, and compliance issues.
-        </p>
-        <ul>
-          <li>Coordinated with security, infra, and app owners to validate impact.</li>
-          <li>Handled QA delays and updated plans while staying ahead of deadline.</li>
-          <li>Completed project early while reducing security exposure.</li>
-        </ul>
-      </div>
+    <main>
+      <section>
+        <h2>Projects</h2>
+        <p>Some of the initiatives I’ve led or supported as an IT Program Manager.</p>
 
-      <div class="project-card">
-        <h3>Cloud Engineering Scrum Implementation</h3>
-        <p>
-          Introduced an Agile Scrum framework for a cloud engineering program that
-          had been using ad-hoc planning for years.
-        </p>
-        <ul>
-          <li>Designed sprint structure, ceremonies, and backlog workflow.</li>
-          <li>Partnered with the CIO and engineering leads on rollout.</li>
-          <li>Improved collaboration, communication, and transparency across teams.</li>
-        </ul>
-      </div>
+        <div class="project-card">
+          <h3>Azure Kubernetes Migration</h3>
+          <p>
+            Led a cross-functional effort to migrate services onto Azure Kubernetes,
+            coordinating engineers, tracking risks, and aligning timelines with business needs.
+          </p>
+          <ul>
+            <li>Planned and coordinated migration milestones and dependencies.</li>
+            <li>Worked closely with infra and app teams to reduce downtime risk.</li>
+            <li>Improved reliability and scalability of services after migration.</li>
+          </ul>
+        </div>
 
-      <div class="project-card">
-        <h3>NetBox IP Address Management Rollout</h3>
-        <p>
-          Drove onboarding of NetBox as a cloud-based IPAM solution to replace
-          manual tracking and improve network visibility.
-        </p>
-        <ul>
-          <li>Aligned database, networking, and datacenter teams on requirements.</li>
-          <li>Defined phases for data migration and validation.</li>
-          <li>Set a clear timeline to complete transition after purchase.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
+        <div class="project-card">
+          <h3>Red Hat Upgrade & Security Hardening</h3>
+          <p>
+            Managed an OS upgrade across critical servers to resolve security,
+            compatibility, and compliance issues.
+          </p>
+          <ul>
+            <li>Coordinated with security, infra, and app owners to validate impact.</li>
+            <li>Handled QA delays and updated plans while staying ahead of deadline.</li>
+            <li>Completed project early while reducing security exposure.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h3>Cloud Engineering Scrum Implementation</h3>
+          <p>
+            Introduced an Agile Scrum framework for a cloud engineering program that
+            had been using ad-hoc planning for years.
+          </p>
+          <ul>
+            <li>Designed sprint structure, ceremonies, and backlog workflow.</li>
+            <li>Partnered with the CIO and engineering leads on rollout.</li>
+            <li>Improved collaboration, communication, and transparency across teams.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h3>NetBox IP Address Management Rollout</h3>
+          <p>
+            Drove onboarding of NetBox as a cloud-based IPAM solution to replace
+            manual tracking and improve network visibility.
+          </p>
+          <ul>
+            <li>Aligned database, networking, and datacenter teams on requirements.</li>
+            <li>Defined phases for data migration and validation.</li>
+            <li>Set a clear timeline to complete transition after purchase.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Dark mode script (same as index.html) -->
+  <script>
+    const button = document.getElementById("theme-toggle");
+
+    if (button) {
+      // Load saved mode on page load
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        button.textContent = "☀️ Light Mode";
+      }
+
+      button.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+          button.textContent = "☀️ Light Mode";
+          localStorage.setItem("theme", "dark");
+        } else {
+          button.textContent = "🌙 Dark Mode";
+          localStorage.setItem("theme", "light");
+        }
+      });
+    }
+  </script>
 </body>
 </html>
+

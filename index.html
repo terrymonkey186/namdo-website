@@ -14,22 +14,24 @@
 </head>
 
 <body>
-  <div class="page">   <!-- ⭐ ADDED WRAPPER -->
-
+  <div class="page">
     <header>
-        <h1>Nam Do</h1>
-        <p>IT Program Manager learning to build technical skills and my own website.</p>
-      
-        <img src="profile.jpg" alt="Photo of Nam Do" class="profile-photo">
-      
-        <nav>
-          <a href="#about">About</a>
-          <a href="#focus">Current Focus</a>
-          <a href="#contact">Contact</a>
-          <a href="projects.html">Projects</a>
-        </nav>
+      <h1>Nam Do</h1>
+      <p>IT Program Manager learning to build technical skills and my own website.</p>
+
+      <img src="profile.jpg" alt="Photo of Nam Do" class="profile-photo">
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#focus">Current Focus</a>
+        <a href="#contact">Contact</a>
+        <a href="projects.html">Projects</a>
+      </nav>
+
+      <!-- Dark mode toggle button -->
+      <button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
     </header>
-      
+
     <main>
       <section id="about">
         <h2>About Me</h2>
@@ -39,7 +41,7 @@
           into a Technical Program Manager role.
         </p>
       </section>
-  
+
       <section id="focus">
         <h2>Current Focus</h2>
         <ul>
@@ -48,16 +50,41 @@
           <li>Building small projects to practice real-world skills</li>
         </ul>
       </section>
-  
+
       <section id="contact">
         <h2>Contact</h2>
         <p>You can reach me at: <strong>namhdo92@gmail.com</strong></p>
       </section>
     </main>
+  </div>
 
-  </div> <!-- ⭐ CLOSE WRAPPER -->
+  <!-- Dark mode script (JS belongs in HTML, NOT in CSS) -->
+  <script>
+    const button = document.getElementById("theme-toggle");
+
+    if (button) {
+      // Load saved mode on page load
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+        button.textContent = "☀️ Light Mode";
+      }
+
+      button.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+          button.textContent = "☀️ Light Mode";
+          localStorage.setItem("theme", "dark");
+        } else {
+          button.textContent = "🌙 Dark Mode";
+          localStorage.setItem("theme", "light");
+        }
+      });
+    }
+  </script>
 </body>
 </html>
+
 
 
   
